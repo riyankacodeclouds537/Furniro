@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furniro</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="./images/Frame 168.png" alt="Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Shop</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <li class="nav-item d-flex align-items-center">
+            <div class="icon-container d-flex align-items-center justify-content-start justify-content-lg-end ms-lg-auto mt-0 w-100">  
+              <i class="ph ph-user me-3" id="user-icon" style="cursor: pointer"></i>
+              <i class="ph ph-magnifying-glass me-3" id="search-icon" style="cursor: pointer"></i>
+              <i class="ph ph-heart me-3" id="wishlistIcon" href="#wishlist-sidebar" style="cursor: pointer"></i>
+              <i class="ph ph-shopping-cart" id="shopping-cart-icon" style="cursor: pointer"></i>
+            </div>
+          </li>
+          
+          
+        </div>
+      </div>
+    </nav>
+    <div id="notification" class="alert" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 1050;"></div>
+    </div>
+    <!-- Login Modal -->
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="loginModalLabel">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="login-form">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-custom">Login</button>
+              <div class="mt-2">
+                <button type="button" class="btn btn-link" id="show-signup">
+                  Don't have an account? Sign Up
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div
+      class="modal fade"
+      id="signupModal"
+      tabindex="-1"
+      aria-labelledby="signupModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="signupModalLabel">Sign Up</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="signup-form">
+              <div class="mb-3">
+                <label for="signup-username" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signup-username"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="signup-email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="signup-email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="signup-password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="signup-password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-custom">Sign Up</button>
+              <div class="mt-2">
+                <button type="button" class="btn btn-link" id="show-login">
+                  Already have an account? Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search Bar -->
+    <div id="search-container" class="d-none">
+      <input type="text" id="search-input" placeholder="Search..." />
+      <i class="ph ph-magnifying-glass" id="search-icon2"></i>
+  </div>
+
+<!-- Search Results -->
+<div id="search-results" class="d-none"></div>
+    
+
+    <!-- Hero Section -->
+    <div id="hero">
+      <div class="container">
+        <div class="row content-wrapper">
+          <div class="col-md-6 d-flex align-items-center">
+            <div class="text-box">
+              <h6 class="new-arrival">N e w&nbsp; A r r i v a l</h6>
+              <h2 class="main-heading">Discover Our New Collection</h2>
+              <p class="description">
+                Discover a curated collection of stylish and contemporary
+                furniture that enhances your home decor and reflects your unique
+                style
+              </p>
+              <a href="#" class="btn btn-custom">BUY NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Section: Browse The Range -->
+    <div class="container">
+      <h2 class="section-title">Browse The Range</h2>
+      <p class="section-subtitle">
+        Explore a diverse selection of furniture crafted to elevate every space
+        in your home.
+      </p>
+      <div class="row g-0">
+        <!-- Using g-3 for spacing between columns -->
+        <!-- Dining Category -->
+        <div class="container my-5">
+            <div class="row text-center">
+                <div class="col-md-4 mb-3">
+                    <div class="img-container">
+                        <img src="./images/Dining.png" class="img-fluid" alt="Dining">
+                    </div>
+                    <h5 class="prod">Dining</h5>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="img-container">
+                        <img src="./images/Living.png" class="img-fluid" alt="Living">
+                    </div>
+                    <h5 class="prod">Living</h5>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="img-container">
+                        <img src="./images/Bedroom.png" class="img-fluid" alt="Bedroom">
+                    </div>
+                    <h5 class="prod">Bedroom</h5>
+                </div>
+            </div>
+        </div>
+        <button id="viewWishlistButton" onclick="showWishlist()" style="margin: 20px; display: none;">View Wishlist</button>
+
+        <!-- Our Products Section  -->
+        <div class="container my-2">
+          <h2 class="text-center mb-3">Our Products</h2>
+          
+          <!-- Product Cards -->
+          <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <div class="image-container">
+                        <img src="./images/Product image 1.png" class="product-image" alt="Product Image" style="width: 100%;">
+                        <div class="discount-badge">-30%</div>
+                    </div>
+                    <div class="hover-content">
+                      <button class="add-to-cart-btn">Add to cart</button>
+                        <div class="icons">
+                            <div class="icon-item">
+                                <i class="ph ph-share-network fs-4"></i>
+                                <span>Share</span>
+                            </div>
+                            <div class="icon-item">
+                                <i class="ph ph-arrows-left-right fs-4"></i>
+                                <span>Compare</span>
+                            </div>
+                            <div class="icon-item2" 
+                              data-product-name="Syltherine" 
+                              data-product-price="Rp 2.500.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Syltherine</h4>
+                        <p class="card-subtitle text-muted">Stylish cafe chair</p>
+                        <div class="pricing">
+                            <span><strong>Rp 2.500.000</strong></span>
+                            <span class="original-price text-muted">Rp 3.500.000</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-to-cart-mobile" 
+              data-product-name="Syltherine" 
+              data-product-price="Rp 2.500.000" 
+              data-product-image="./images/Product image 1.png"
+            
+              onclick="setupMobileAddToCart(this)">
+            </div>
+        
+              <!-- Card 2 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+          <div class="card product-card">
+              <div class="image-container">
+                  <img src="./images/Product image 2.png" class="product-image" alt="Product Image" style="width: 100%;">
+              </div>
+              <div class="hover-content">
+                <button class="add-to-cart-btn">Add to cart</button>
+                <div class="icons">
+                    <div class="icon-item">
+                        <i class="ph ph-share-network fs-4"></i>
+                        <span>Share</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="ph ph-arrows-left-right fs-4"></i>
+                        <span>Compare</span>
+                    </div>
+                    <div class="icon-item2" 
+                              data-product-name="Leviosa" 
+                              data-product-price="Rp 2.500.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+                </div>
+            </div>
+              <div class="card-body text-center">
+                  <h4 class="card-title">Leviosa</h4>
+                  <p class="card-subtitle text-muted">Stylish cafe chair</p>
+                  <div class="pricing">
+                      <span><strong>Rp 2.500.000</strong></span>
+                  </div>
+              </div>
+          </div>
+          <button class="add-to-cart-mobile" 
+              data-product-name="Leviosa" 
+              data-product-price="Rp 2.500.000" 
+              data-product-image="./images/Product image 2.png"
+            
+              onclick="setupMobileAddToCart(this)">
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-3 col-sm-6 mb-4">
+          <div class="card product-card">
+              <div class="image-container">
+                  <img src="./images/Product image 3.png" class="product-image" alt="Product Image" style="width: 100%;">
+                  <div class="discount-badge">-50%</div>
+              </div>
+              <div class="hover-content">
+                <button class="add-to-cart-btn">Add to cart</button>
+                <div class="icons">
+                    <div class="icon-item">
+                        <i class="ph ph-share-network fs-4"></i>
+                        <span>Share</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="ph ph-arrows-left-right fs-4"></i>
+                        <span>Compare</span>
+                    </div>
+                    <div class="icon-item2" 
+                              data-product-name="Lolito" 
+                              data-product-price="Rp 7.000.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+                </div>
+            </div>
+              <div class="card-body text-center">
+                  <h4 class="card-title">Lolito</h4>
+                  <p class="card-subtitle text-muted">Luxury big sofa</p>
+                  <div class="pricing">
+                      <span><strong>Rp 7.000.000</strong></span>
+                      <span class="original-price text-muted">Rp 14.000.000</span>
+                  </div>
+              </div>
+          </div>
+          <button class="add-to-cart-mobile" 
+              data-product-name="Lolito"
+              data-product-price="Rp 7.000.000" 
+              data-product-image="./images/Product image 3.png"
+            
+              onclick="setupMobileAddToCart(this)">
+          <strong>Add to cart</strong>
+          </button>
+
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-3 col-sm-6 mb-4">
+          <div class="card product-card">
+              <div class="image-container">
+                  <img src="./images/Product image 4.png" class="product-image" alt="Product Image" style="width: 100%;">
+                  <div class="new-badge">New</div>
+              </div>
+              <div class="hover-content">
+                <button class="add-to-cart-btn">Add to cart</button>
+                <div class="icons">
+                    <div class="icon-item">
+                        <i class="ph ph-share-network fs-4"></i>
+                        <span>Share</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="ph ph-arrows-left-right fs-4"></i>
+                        <span>Compare</span>
+                    </div>
+                    <div class="icon-item2" 
+                              data-product-name="Respira" 
+                              data-product-price="Rp 500.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+                </div>
+            </div>
+              <div class="card-body text-center">
+                  <h4 class="card-title">Respira</h4>
+                  <p class="card-subtitle text-muted">Outdoor bar table and stool</p>
+                  <div class="pricing">
+                      <span><strong>Rp 500.000</strong></span>
+                  </div>
+              </div>
+          </div>
+          <button class="add-to-cart-mobile" 
+              data-product-name="Respira"
+              data-product-price="Rp 500.000" 
+              data-product-image="./images/Product image 4.png" 
+            
+              onclick="setupMobileAddToCart(this)">
+      </div>
+  </div>
+  <!-- Second Row -->
+  <div class="row">
+    <!-- Card 5 -->
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card product-card">
+            <div class="image-container">
+                <img src="./images/Image 5.png" class="product-image" alt="Product Image" style="width: 100%;">
+            </div>
+            <div class="hover-content">
+              <button class="add-to-cart-btn">Add to cart</button>
+              <div class="icons">
+                  <div class="icon-item">
+                      <i class="ph ph-share-network fs-4"></i>
+                      <span>Share</span>
+                  </div>
+                  <div class="icon-item">
+                      <i class="ph ph-arrows-left-right fs-4"></i>
+                      <span>Compare</span>
+                  </div>
+                  <div class="icon-item2" 
+                              data-product-name="Grifo" 
+                              data-product-price="Rp 1.500.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+              </div>
+          </div>
+            <div class="card-body text-center">
+                <h4 class="card-title">Grifo</h4>
+                <p class="card-subtitle text-muted">Night lamp</p>
+                <div class="pricing">
+                    <span><strong>Rp 1.500.000</strong></span>
+                </div>
+            </div>
+        </div>
+        <button class="add-to-cart-mobile" 
+              data-product-name="Grifo"
+              data-product-price="Rp 1.500.000" 
+              data-product-image="./images/Image 5.png" 
+            
+              onclick="setupMobileAddToCart(this)">
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card product-card">
+            <div class="image-container">
+                <img src="./images/Images (4).png" class="product-image" alt="Product Image" style="width: 100%;">
+                <div class="new-badge">New</div>
+            </div>
+            <div class="hover-content">
+              <button class="add-to-cart-btn">Add to cart</button>
+              <div class="icons">
+                  <div class="icon-item">
+                      <i class="ph ph-share-network fs-4"></i>
+                      <span>Share</span>
+                  </div>
+                  <div class="icon-item">
+                      <i class="ph ph-arrows-left-right fs-4"></i>
+                      <span>Compare</span>
+                  </div>
+                  <div class="icon-item2" 
+                              data-product-name="Muggo" 
+                              data-product-price="Rp 150.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+              </div>
+          </div>
+            <div class="card-body text-center">
+                <h4 class="card-title">Muggo</h4>
+                <p class="card-subtitle text-muted">Small mug</p>
+                <div class="pricing">
+                    <span><strong>Rp 150.000</strong></span>
+                </div>
+            </div>
+        </div>
+        <button class="add-to-cart-mobile" 
+              data-product-name="Muggo"
+              data-product-price="Rp 150.000" 
+              data-product-image="./images/Images (4).png"
+            
+              onclick="setupMobileAddToCart(this)">
+    </div>
+
+    <!-- Card 7 -->
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card product-card">
+            <div class="image-container">
+                <img src="./images/Images (5).png" class="product-image" alt="Product Image" style="width: 100%;">
+                <div class="discount-badge">-50%</div>
+            </div>
+            <div class="hover-content">
+              <button class="add-to-cart-btn">Add to cart</button>
+              <div class="icons">
+                  <div class="icon-item">
+                      <i class="ph ph-share-network fs-4"></i>
+                      <span>Share</span>
+                  </div>
+                  <div class="icon-item">
+                      <i class="ph ph-arrows-left-right fs-4"></i>
+                      <span>Compare</span>
+                  </div>
+                  <div class="icon-item2" 
+                              data-product-name="Pingky" 
+                              data-product-price="Rp 7.000.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+              </div>
+          </div>
+            <div class="card-body text-center">
+                <h4 class="card-title">Pingky</h4>
+                <p class="card-subtitle text-muted">Cute bed set</p>
+                <div class="pricing">
+                    <span><strong>Rp 7.000.000</strong></span>
+                    <span class="original-price text-muted">Rp 14.000.000</span>
+                </div>
+            </div>
+        </div>
+         <!-- Add to Cart button after the product card -->
+         <button class="add-to-cart-mobile" 
+         data-product-name="Pingky"
+         data-product-price="Rp 7.000.000"
+         data-product-image="./images/Images (5).png"
+       
+         onclick="setupMobileAddToCart(this)">
+    </div>
+
+    <!-- Card 8 -->
+    <div class="col-md-3 col-sm-6 mb-4">
+        <div class="card product-card">
+            <div class="image-container">
+                <img src="./images/Images (7).png" class="product-image" alt="Product Image" style="width: 100%;">
+                <div class="new-badge">New</div>
+            </div>
+            <div class="hover-content">
+              <button class="add-to-cart-btn">Add to cart</button>
+              <div class="icons">
+                  <div class="icon-item">
+                      <i class="ph ph-share-network"></i>
+                      <span>Share</span>
+                  </div>
+                  <div class="icon-item">
+                      <i class="ph ph-arrows-left-right"></i>
+                      <span>Compare</span>
+                  </div>
+                  <div class="icon-item2" 
+                              data-product-name="Potty" 
+                              data-product-price="Rp 500.000" 
+                              data-product-icon="&lt;i class=&quot;ph ph-heart&quot;&gt;&lt;/i&gt;"
+                              onclick="addToWishlist(this)">
+                              <i class="ph ph-heart fs-4"></i>
+                              <span>Like</span>
+                          </div>
+              </div>
+          </div>
+            <div class="card-body text-center">
+                <h4 class="card-title">Potty</h4>
+                <p class="card-subtitle text-muted">Minimalist flower pot</p>
+                <div class="pricing">
+                    <span><strong>Rp 500.000</strong></span>
+                </div>
+            </div>
+        </div>
+        <!-- Add to Cart button after the product card -->
+        <button class="add-to-cart-mobile" 
+         data-product-name="Potty"
+         data-product-price="Rp 500.000"
+         data-product-image="./images/Images (7).png""
+       
+         onclick="setupMobileAddToCart(this)">
+    </div>
+    </div>
+</div>
+      <!-- Show More Button -->
+      <div class="container text-center my-2">
+        <button class="btn btn-outline-warning btn-lg">Show More</button>
+      </div>
+
+      <div class="container-fluid mt-1">
+        <div class="row">
+            <!-- Text Section -->
+            <div class="col-md-6 d-flex align-items-center">
+                <div class="text-section">
+                    <h1 class="heading">50+ Beautiful rooms inspiration</h1>
+                    <p class="subheading">Our designer already made a lot of beautiful prototype of rooms that inspire you</p>
+                    <button class="btn btn-explore">Explore More</button>
+                </div>
+            </div>
+
+            <!--Cart-->
+            <div id="cartSidebar" class="cart-sidebar"> 
+              <div class="cart-header">
+                  <h3>Shopping Cart</h3>
+                  <button id="closeCart" class="close-cart">
+                    <i class="ph ph-x"></i>
+                </button>
+              </div>
+              <div class="cart-body">
+                  <ul id="cartItems">
+                      <!-- Cart items will be dynamically added here -->
+                  </ul>
+                  <div class="empty-cart" style="display: none; text-align: center;">
+                      <img src="./images/cartimg.jpg" alt="Empty Cart" style="max-width: 200px;"/>
+                      <p>Your cart is empty. Looks like you haven't made your choice yet!</p>
+                  </div>
+                  <div class="cart-footer">
+                      <p>Subtotal: <span id="cartTotal">Rp 0</span></p>
+                      <button class="checkout" id="checkoutButton">Checkout</button>
+                      <button class="clear-cart">Clear Cart</button>
+                  </div>
+              </div>
+          </div>
+          
+        <!-- Wishlist -->
+          <div id="wishlistSidebar" class="wishlist-sidebar" style="display: none;">
+            <div class="wishlist-header">
+                <h3>Wishlist</h3>
+                <button id="closeWishlist" class="close-wishlist">
+                    <i class="ph ph-x"></i> <!-- Close icon -->
+                </button>
+            </div>
+            <div class="wishlist-body">
+                <ul id="wishlistItems">
+                    <li class="wishlist-item">
+                        <!-- Wishlist item content here -->
+                    </li>
+                    <!-- Wishlist items will be dynamically added here -->
+                </ul>
+                <p id="emptyWishlistMessage" style="display: none; text-align: center;">Your wishlist is empty.</p>
+            </div>
+            <div class="wishlist-footer">
+                <button class="clear-wishlist">Clear Wishlist</button>
+            </div>
+        </div>
+        
+        
+            <div id="customAlert" class="custom-alert" style="display: none;">
+              <div class="custom-alert-content">
+                  <span id="alertMessage"></span>
+                  
+              </div>
+          </div>
+          
+        
+
+          
+    
+            <!-- Carousel Section -->
+            <div class="col-md-6">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./images/carosel img1.png" class="d-block w-100" alt="Carousel image 1">
+                            <div class="carousel-caption custom-caption d-none d-md-block">
+                                <h5>01 — Bed Room</h5>
+                                <div class="d-flex justify-content-center align-items-end">
+                                    <p>Inner Peace</p>
+                                    <div class="button-container">
+                                        <button class="arrow-btn" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/carosel img2.png" class="d-block w-100" alt="Carousel image 2">
+                            <div class="carousel-caption custom-caption d-none d-md-block">
+                                <h5>02 — Living</h5>
+                                <div class="d-flex justify-content-center align-items-end">
+                                    <p>Cozy Comfort</p>
+                                    <div class="button-container">
+                                        <button class="arrow-btn" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./images/carosel img3.png" class="d-block w-100" alt="Carousel image 3">
+                            <div class="carousel-caption custom-caption d-none d-md-block">
+                                <h5>03 — Dining</h5>
+                                <div class="d-flex justify-content-center align-items-end">
+                                    <p>Modern</p>
+                                    <div class="button-container">
+                                        <button class="arrow-btn" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer mt-auto py-4">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>Funiro.</h5>
+                  <p>400 University Drive Suite 200 Coral Gables,<br> FL 33134 USA</p>
+              </div>
+              <div class="col-md-2">
+                  <h6>Links</h6>
+                  <ul class="list-unstyled">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Shop</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-2">
+                  <h6>Help</h6>
+                  <ul class="list-unstyled">
+                      <li><a href="#">Payment Options</a></li>
+                      <li><a href="#">Returns</a></li>
+                      <li><a href="#">Privacy Policies</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h6>Newsletter</h6>
+                  <form>
+                      <div class="input-group">
+                          <input type="email" class="form-control" placeholder="Enter Your Email Address" aria-label="Email">
+                          <div class="input-group-append">
+                              <button class="btn btn-outline-secondary" type="submit">SUBSCRIBE</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <hr>
+          <div class="row mt-4">
+              <div class="col-md-12 text-left">
+                  <p>2023 funiro. All rights reserved</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+    
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

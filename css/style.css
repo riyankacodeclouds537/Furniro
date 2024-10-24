@@ -1,0 +1,1428 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin:0px;
+    padding:0px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
+.navbar-brand img {
+    margin-left: 20px;
+    width: 130px;
+    margin-right: 8px;
+}
+
+.navbar-nav {
+    margin-right: 50px; /* Pushes nav items to the right */
+}
+.nav-item {
+    list-style: none; /* Removes bullet point */
+}
+
+.nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 600; 
+    color: #000000;
+    margin-right: 35px;
+    padding: 3px 0;
+    text-align: left;
+}
+
+.navbar-nav .nav-item:last-child .nav-link {
+    margin-right:0;
+    margin-left:0;
+}
+.navbar-toggler {
+    border: 2px solid #B88E2F; /* Add border around icon */
+}
+.nav-item .nav-link:hover {
+    color: #FFFFFF; /* Change text color to white */
+    background-color: #B88E2F; /* Background color on hover */
+    border-radius: 10px;
+}
+@media (max-width: 991.98px) {
+    .icon-container {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+.icon-container {
+    color: #000000;
+}
+
+.icon-container i {
+    font-size: 22px;
+    margin-right: 30px; /* Adds spacing between icons */
+}
+
+.icon-container i:last-child {
+    margin-right: 35px; /* Ensures no margin after the last icon */
+}
+
+/* Optional: control positioning and alignment on the page */
+
+/* Searchbar */
+#search-container {
+    margin: 10px 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    width: 200px;
+}
+#search-icon2 {
+    border: 1px solid #ccc;
+    height:46px;
+    width:46px;
+    cursor: pointer;
+    font-size: 21px; /* Size of the icon */
+    color: white; /* Color of the icon */
+    background-color: #B88E2F; /* Icon background color */
+    padding: 15px; /* Padding around the icon */
+   
+    display: flex;
+    align-items: center; /* Align icon vertically */
+    justify-content: center; /* Center icon */
+   
+}
+
+/* #search-button {
+    padding: 10px;
+    margin-left: 5px;
+    border: none;
+    background-color: #B88E2F;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+} */
+
+#search-results {
+    margin-top: 10px;
+}
+
+.search-result-item {
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.highlight {
+    background-color: #B88E2F; /* Highlight color */
+    color: white; /* Text color for the highlighted part */
+    padding: 0 2px; /* Optional padding */
+}
+.d-none {
+    display: none;
+}
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 90vw; /* Adjust width on small screens */
+        top: 60px; /* Adjust top position */
+        right: 5%; /* Center it more on smaller screens */
+    }
+}
+/* Login form */
+#loginModalLabel {
+    color: #B88E2F; /* Set the color for the heading */
+}
+
+/* Style for the close button */
+.modal-header .btn-close {
+    background-color: #B88E2F; /* Set the color for the close button */
+    color:white;
+    
+}
+#signupModalLabel {
+    color: #B88E2F; /* Set the color for the Sign Up heading */
+}
+
+.modal-content {
+    border-radius: 10px; /* Rounded corners */
+}
+
+
+.modal-header {
+    border-bottom: none; /* Remove bottom border */
+}
+
+.modal-body {
+    padding: 20px; /* Add padding to modal body */
+}
+
+.form-label {
+    font-weight: bold; /* Bold labels */
+}
+
+#hero {
+    background-image: url('../images/hero\ image\ 1.png');
+    background-position: center center; /* Default position */
+    background-size: cover; /* Cover the entire area */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    width: 100%; /* Full width */
+    position: relative; /* For absolute positioning of content */
+}
+
+/* cart */
+.cart-sidebar {
+    width: 400px;
+    position: fixed;
+    right: -400px;
+    top: 0;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+.cart-header h3 {
+    font-family: 'Poppins', sans-serif; /* Make sure Poppins is imported in your HTML */
+    font-weight: bold; /* Set font weight to bold */
+    font-size: 24px; /* Set font size */
+    color: #B88E2F; /* Set text color */
+    margin: 0; /* Remove default margin */
+}
+
+.cart-body {
+    padding: 20px;
+    max-height: calc(100% - 160px);
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.cart-item-details {
+    display: flex;
+    align-items: space-evenly;
+}
+
+.cart-item-image {
+    width: 150px;
+    height: 150px;
+    margin-right: 15px;
+    border-radius: 8px;
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: space-between;
+}
+
+.cart-item-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #555;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.quantity-controls button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-controls button:focus {
+    outline: none;
+}
+
+.quantity-controls span {
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.remove-item {
+    background-color: #ffffff !important;
+}
+
+.close-cart {
+    background-color: white;
+    border: none;
+    height: 30px;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    
+    justify-content: flex-end;
+}
+
+
+.remove-item {
+    background-color: rgb(255, 114, 114);
+    padding: 5px;
+    height: 50px;
+    width: 50px;
+    font-size: 1.3rem;
+    border: 0px solid white;
+}
+.cart-buttons {
+    display: flex; /* Use flexbox to align buttons */
+    gap: 15px; /* Space between buttons */
+}
+
+.checkout {
+    padding: 10px 25px;
+    background-color: #B88E2F;
+    color: white;
+    border: none;
+    transition: 0.5s;
+}
+
+.checkout:hover {
+    background-color: white;
+    border: 1px solid #B88E2F;
+    color: #B88E2F;
+}
+.clear-cart {
+    background-color:#B88E2F; /* Example color for clear cart button */
+    color: white; /* Text color */
+    
+    padding: 10px 15px; /* Button padding */
+   
+    cursor: pointer; /* Pointer cursor on hover */
+    border: none;
+    transition: 0.5s ease;
+    margin-left: 30px;
+}
+
+.clear-cart:hover {
+    background-color: #007B9E; 
+}
+.close-cart {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    padding: 0; /* Remove padding */
+}
+
+.close-cart .ph-x {
+    font-size: 24px; 
+    color: #B88E2F; 
+}
+/* Hide the button by default */
+.add-to-cart-mobile {
+    display: none;
+    margin:4px 2px;
+    background-color: #B88E2F;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    width:100%;
+    border: 1px solid #B88E2F; /* Border color */
+   
+
+}
+
+/* Show the button only for small screens (up to 768px wide) */
+@media screen and (max-width: 768px) {
+    .add-to-cart-mobile {
+        display: block; /* Show on small screens */
+    }
+
+    .icons {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .icon-item,
+    .icon-item2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+}
+/* For screens up to 500px */
+@media screen and (max-width: 500px) {
+    /* Hide only hover content */
+    .hover-content {
+        display: none; /* Hide hover content on mobile */
+    }
+
+    /* Ensure other elements like product image, discount badge, and card-body are visible */
+    .product-card .image-container,
+    .product-card .card-body,
+    .product-card .pricing {
+        display: block; /* Keep these visible on mobile */
+    }
+}
+
+/* For screens up to 768px */
+@media screen and (max-width: 768px) {
+    /* Hide hover content on larger small screens too */
+    .hover-content {
+        display: none; /* Hide hover content */
+    }
+    /* Disable hover effect on mobile */
+    .product-card:hover .hover-content {
+        opacity: 0; /* Ensure hover content stays hidden, no opacity change */
+    }
+    
+    .product-card .image-container,
+    .product-card .card-body,
+    .product-card .pricing {
+        display: block; /* Keep these visible on larger small screens */
+    }
+}
+
+
+/* Wishlist */
+.wishlist-item {
+    display: flex;                /* Use flexbox for layout */
+    align-items: center;         /* Center items vertically */
+    justify-content: space-between; /* Space between elements */
+    padding: 10px;              /* Add some padding for better appearance */
+    border-bottom: 1px solid #ccc; /* Optional: add a bottom border for separation */
+}
+
+
+.wishlist-footer {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    
+    justify-content: flex-end;
+}
+
+.clear-wishlist {
+    background-color:#B88E2F; 
+    color: white;
+    
+    padding: 10px 15px; 
+   
+    cursor: pointer; 
+    border: none;
+    transition: 0.5s ease;
+    margin-left: 30px;
+}
+.clear-wishlist:hover {
+    background-color: #007B9E; 
+}
+.close-wishlist {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    padding: 0; /* Remove padding */
+}
+
+.close-wishlist .ph-x {
+    font-size: 24px; /* Adjust the icon size */
+    color: #B88E2F; /* Change color if needed */
+}
+.wishlist-header h3 {
+    font-family: 'Poppins', sans-serif; /* Make sure Poppins is imported in your HTML */
+    font-weight: bold; /* Set font weight to bold */
+    font-size: 24px; /* Set font size */
+    color: #B88E2F; /* Set text color */
+    margin: 0; /* Remove default margin */
+}
+#emptyWishlistMessage{
+    display: none;
+    text-align: center;
+    color: #B88E2F;
+}
+.wishlist-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: #f8f9fa; 
+    border-left: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+}
+
+.wishlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.wishlist-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px;
+    border-bottom: 1px solid #ddd; 
+}
+
+.wishlist-item img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.wishlist-item span {
+    flex-grow: 1; 
+}
+
+.wishlist-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.close-wishlist {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.custom-alert {
+    position: fixed; /* Change to fixed if you want it to be always visible at the top */
+    top: 10%; /* Adjusted to create some space from the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    height: auto; /* Change height to auto for dynamic height */
+    max-width: 300px; /* Optional: Set a max width for better appearance */
+    background-color: #B88E2F; /* Optional: Set background color */
+    color: #fff; /* Text color for contrast */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px; /* Optional: Add some rounding */
+    padding: 20px; /* Optional: Add padding to the alert box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better visibility */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+
+
+.custom-alert-content {
+    background-color: #B88E2F; /* Alert background color */
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: white; /* Text color */
+}
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    #hero {
+        background-position: 40% top; /* Shift image up on mobile */
+
+    }
+
+    .text-box {
+        margin-top: 50px; /* Add space to push content down */
+    }
+}
+
+/* For small mobile screens */
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        flex-direction: column;
+        margin-left: 0; /* Reset margin for mobile view */
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Spacing between nav items */
+    }
+
+    .icon-container {
+        display: flex; /* Show icons in mobile view */
+        margin-top: 10px; /* Add some space above icons */
+    }
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    .icon-container {
+        display: flex; /* Show icons in larger screens */
+    }
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 70px;
+}
+
+.text-box {
+    background-color: #fff3e3;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+
+.new-arrival {
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.main-heading {
+    font-size: 70px;
+    font-weight: bold;
+    color: #b88e2f;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+/* .content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 70px;
+    width:100%;
+    margin-right: 25px;
+}
+
+.text-box {
+    background-color: #fff3e3;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    max-width: 500px;
+}
+
+.new-arrival {
+    margin-top: 20px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.main-heading {
+    font-size: 70px;
+    font-weight: bold;
+    color: #b88e2f;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 15px;
+    color: #000000;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+} */
+
+.btn-custom{
+    background-color: #b88e2f;
+    color: white;
+    border: none;
+    border-radius: 0px;
+    padding: 10px 20px;
+    font-size: 15px;
+    height: 60px;
+    width: 180px;
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.btn-custom:hover {
+    background-color: #ffffff;
+    border:#000;
+    color: #b88e2f;
+    border-color: #000000;
+    border-radius: 1px;
+}
+@media (max-width: 768px) {
+
+    .text-box {
+        padding: 15px; /* Smaller padding on mobile */
+        background-color: rgba(255, 243, 227, 0.6);
+    }
+
+    .main-heading {
+        font-size: 25px; /* Adjust font size for smaller screens */
+    }
+
+    .description {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+    .content-wrapper {
+        margin-top: -340px; /* Adjust this value to shift the container higher on mobile */
+    }
+}
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 50px; /* Added more margin at the top */
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #333333;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: gray;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+} 
+.img-container {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.img-container img {
+    
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.img-container:hover {
+    transform: scale(1.1); /* Scale image up on hover */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.prod {
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; 
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+    opacity:0.9;
+}
+/*Our Products */
+h2.text-center {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    
+}
+/* .product-card {
+    border: none;
+    width: 285px;
+    height: 446px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+} */
+
+.discount-badge {
+    margin-right: 10px;
+    margin-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6666;
+    color: white;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.card-body {
+    background-color: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: left;
+    background-color: #f4f5f7;
+    padding: 20px;
+    text-align: center;
+    height: 100%; /* Ensure full height */
+    
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align:left;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+.card-subtitle {
+    font-size: 16px;
+    margin: 15px 0 15px; /* This keeps the bottom margin */
+    text-align:left;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #898989;
+   
+}
+
+
+.pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.original-price {
+    margin-left: 0;
+    
+    font-size: 20px;
+    text-decoration: line-through;
+    color: #B0B0B0;
+    font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+    .original-price {
+        font-size: 0.7rem; 
+    }
+}
+/* .current-price {
+    font-weight: bold;
+   
+    font-family: 'Poppins', sans-serif;
+} */
+
+@media screen and (min-width: 576px) {
+    .current-price {
+        font-size: 0.8rem; /* Adjust size for larger screens */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .current-price {
+        font-size: 0.5rem; /* Further adjust for even larger screens */
+    }
+}
+
+.new-badge {
+    background-color: #30D5C8;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+
+/* Styling for the Show More Button */
+.btn-outline-warning {
+    color: #B88E2F;
+    border-color: #B88E2F;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 0;
+    width: 245px; 
+    height: 48px;
+    border-width: 2px;
+    margin-top: 20px;
+    margin-bottom:30px;
+}
+
+.btn-outline-warning:hover {
+    background-color: #B88E2F;
+    color: white;
+    
+}
+.hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    /* / Add padding to prevent content from overflowing / */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+    /* / Ensure it appears on top of the image / */
+}
+
+.product-card:hover .hover-content {
+    opacity: 1;
+}
+.add-to-cart-btn {
+    background-color: #FFFFFF; /* Default background */
+    border: 1px solid #B88E2F; /* Border color */
+    color: #B88E2F; /* Text color */
+    padding: 10px 15px; /* Padding for better size */
+    font-weight: 600;
+    cursor: pointer; /* Pointer on hover */
+    width:202px;
+    height:48px;
+    transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+}
+
+/* Button Hover Effect */
+.add-to-cart-btn:hover {
+    background-color: #B88E2F; /* Background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+.hover-content .icons {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly between icons */
+    align-items: center; /* Vertically centers the items */
+    margin: 10px; /* Margin around the entire icons container */
+    color: white; /* Text color for icons */
+    font-size: 19px; /* Font size for icons */
+    font-weight: 600; /* Font weight for icons */
+    padding: 5px; /* Padding for better spacing */
+}
+
+/* Icon Item Styles */
+.icon-item {
+    flex: 1; /* Make each icon item take equal space */
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    padding: 2px;
+    margin: 0px 5px;
+}
+
+/* Icon Styles */
+.icon-item i {
+    font-size: 1.6rem; /* Default size for large screens */
+    margin-right: 5px; /* Add space between icon and text */
+}
+
+/* Text Styles */
+.icon-item span {
+    font-size: 1rem; /* Default size for large screens */
+}
+
+/* Media Queries for Responsive Design */
+
+/* Adjust for large tablets and small desktops */
+@media (max-width: 1024px) {
+    .icon-item i {
+        font-size: 1rem; /* Scale down the icon size */
+    }
+    .icon-item span {
+        font-size: 0.7rem; /* Slightly smaller text */
+    }
+}
+
+/* Adjust for tablets */
+@media (max-width: 768px) {
+    .icon-item {
+        padding: 2px 4px; /* Reduce padding for smaller screens */
+    }
+    .icon-item i {
+        font-size: 1.4rem; /* Decrease icon size */
+    }
+    .icon-item span {
+        font-size: 0.85rem; /* Adjust text size for tablets */
+    }
+}
+
+/* Adjust for mobile devices */
+@media (max-width: 480px) {
+    .icon-item {
+        padding: 2px 3px; /* Further reduce padding */
+    }
+    .icon-item i {
+        font-size: 1.2rem; /* Smaller icon size for mobile */
+    }
+    .icon-item span {
+        font-size: 0.8rem; /* Smaller text for mobile */
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .icon-item {
+        padding: 1px 2px; /* Even smaller padding */
+    }
+    .icon-item i {
+        font-size: 1rem; /* Further reduce icon size */
+    }
+    .icon-item span {
+        font-size: 0.75rem; /* Smaller text */
+    }
+}
+.icon-item2 {
+    flex: 1; /* Make each icon item take equal space */
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    padding: 2px;
+    margin: 0px 5px;
+}
+
+/* Icon Styles */
+.icon-item2 i {
+    font-size: 1.6rem; /* Default size for large screens */
+    margin-right: 5px; /* Add space between icon and text */
+}
+
+/* Text Styles */
+.icon-item2 span {
+    font-size: 1rem; /* Default size for large screens */
+    cursor:pointer;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Adjust for large tablets and small desktops */
+@media (max-width: 1024px) {
+    .icon-item2 i {
+        font-size: 1rem; /* Scale down the icon size */
+    }
+    .icon-item2 span {
+        font-size: 0.7rem; /* Slightly smaller text */
+    }
+}
+
+/* Adjust for tablets */
+@media (max-width: 768px) {
+    .icon-item2 {
+        padding: 2px 4px; /* Reduce padding for smaller screens */
+    }
+    .icon-item2 i {
+        font-size: 1.4rem; /* Decrease icon size */
+    }
+    .icon-item2 span {
+        font-size: 0.85rem; /* Adjust text size for tablets */
+    }
+}
+
+/* Adjust for mobile devices */
+@media (max-width: 480px) {
+    .icon-item2 {
+        padding: 2px 3px; /* Further reduce padding */
+    }
+    .icon-item2 i {
+        font-size: 1.2rem; /* Smaller icon size for mobile */
+    }
+    .icon-item2 span {
+        font-size: 0.8rem; /* Smaller text for mobile */
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+    .icon-item2 {
+        padding: 1px 2px; /* Even smaller padding */
+    }
+    .icon-item2 i {
+        font-size: 1rem; /* Further reduce icon size */
+    }
+    .icon-item2 span {
+        font-size: 0.75rem; /* Smaller text */
+    }
+}
+
+
+/* Icon Item Hover Effect */
+.icon-item:hover {
+    color: #B88E2F; /* Change icon color on hover */
+}
+
+.hover-content .icons a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+/* Carousel */
+.text-section .heading {
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    font-weight: 700; /* Bold */
+    font-size: 40px; /* 40px size */
+    color: #3A3A3A; /* Optional: You can change the color if needed */
+}
+
+.text-section .subheading {
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    font-weight: 500; /* Medium */
+    font-size: 18px; /* 16px size */
+    color:#616161; /* Optional: You can adjust the color as needed */
+}
+.btn-explore {
+    background-color: #B88E2F; /* Background color */
+    font-family: 'Poppins', sans-serif; /* Poppins font */
+    font-weight: 600; /* Semibold */
+    font-size: 16px; /* Font size 16px */
+    color: #FFFFFF; /* Text color white */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* Remove border */
+    border-radius: 0px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.btn-explore:hover {
+    background-color: #9C7B2F; /* Darken the background on hover */
+}
+.button-container {
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    right: calc(100% - 265px); /* Position it right of the custom caption */
+    top: 54%; /* Adjust vertical alignment */
+}
+
+/* Style the button */
+.arrow-btn {
+    background-color: #9C7B2F;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    color: white;
+    
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #B88E2F; /* Set the background color to white */
+    color: white; /* Set the icon color to #B88E2F */
+    border-radius: 50%; /* Optional: Make it circular */
+    width: 40px; /* Set the width */
+    height: 40px; /* Set the height */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    filter: none; /* Ensure no filter is applied to the arrows */
+}
+
+/* Optional: Change the default color of the icons */
+.carousel-control-prev-icon:before,
+.carousel-control-next-icon:before {
+    color: #B88E2F; /* Ensure the arrow color is set */
+}
+
+
+/* Carousel captions */
+.carousel-caption h5 {
+    font-size: 1.20rem; /* Responsive font size */
+    font-weight: 600;
+    color: #333333;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.carousel-caption p {
+    font-size: 1.20rem; /* Responsive font size */
+    font-weight: 700;
+    color: #010101;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+
+}
+.custom-caption {
+    align-items: flex-end;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.72); /* Set with opacity */
+    padding: 15px;
+    width: 100%; /* Use full width on smaller screens */
+    max-width: 217px; /* Keep max width */
+    height: auto; /* Allow height to adjust */
+    margin: 0 auto; /* Centers the box horizontally */
+    
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .custom-caption {
+        padding: 10px; /* Reduce padding for smaller screens */
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-caption {
+        padding: 5px; /* Further reduce padding for very small screens */
+       
+        font-size: 14px; /* Optional: Adjust font size for readability */
+    }
+}
+
+
+.carousel-indicators li {
+    background-color: #B88E2F;
+}
+
+/* Additional media queries for smaller screens */
+@media (max-width: 768px) {
+    .carousel-caption {
+        text-align: center; /* Center the text on smaller screens */
+    }
+
+    .button-container {
+        margin-bottom:6px 1px;
+}
+
+    .carousel-caption h5, .carousel-caption p {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .arrow-btn {
+        font-size: 18px; /* Smaller button for mobile */
+        padding: 8px;
+    }
+}
+.footer {
+    background-color: #FFFFFF;  /* Set footer background to white */
+    color: #000000;             /* Set default text color to black */
+    padding: 20px;              
+}
+
+.footer h5 {
+    font-weight: bold;          
+    margin-bottom: 40px;    
+    margin-top:30px; 
+}
+
+.footer h6 {
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500;                  
+    font-size: 16px;                    
+    color: #9F9F9F;                     
+    margin-bottom: 45px;    
+    margin-top:30px;              
+}
+
+.footer p {
+    color: #6c757d;             
+    font-size: 18px;            
+    margin: 0;                  /* Ensure paragraphs have no additional margins */
+}
+
+.footer a {
+    color: #000000;             
+    text-decoration: none;      
+}
+.footer a:hover {
+    color: #FFFFFF; /* Change text color to white */
+    background-color: #B88E2F; /* Background color on hover */
+    border-radius: 10px; /* Rounded corners */
+    padding: 5px 10px; /* Add some padding for better appearance */
+}
+
+
+.col-md-4 .form-control {
+    border: 0;                          
+    border-radius: 0;                   /* Remove rounded corners */
+    box-shadow: none;                   /* Remove any shadow */
+    font-family: 'Poppins', sans-serif; 
+    color: #9F9F9F;                     
+    display: inline-block;               
+    max-width: 50%;                     
+    font-size: 14px;                    
+    height: 21px;                       
+    border-bottom: 2px solid #000000;   
+    padding-bottom: 2px;
+    padding-left:3px; 
+}
+
+/* Style for input focus */
+.col-md-4 .form-control:focus {
+    outline: none;                       /* Remove blue outline on focus */
+    box-shadow: none;                    /* Prevent box shadow on focus */
+    color: #000000;                      /* Change text color on focus */
+}
+
+/* Style for placeholder text */
+.col-md-4 .form-control::placeholder {
+    color: #9F9F9F;                     /* Placeholder text color */
+    opacity: 1;                         /* Ensure full visibility of the placeholder */
+    font-size: 12px;                    /* Keep the same font size */
+}
+
+/* Style for the subscribe button */
+.col-md-4 .input-group-append .btn {
+    background-color: transparent;       /* Transparent background */
+    color: #000000;                      /* Set Subscribe button text to black */
+    border: none;                        /* Remove border */
+    font-family: 'Poppins', sans-serif;  /* Apply Poppins font */
+    font-weight: 600;                    /* Medium weight for the button */
+    font-size: 14px;                     /* Set font size */
+    padding: 0;                          /* Remove extra padding to limit button width */
+    margin-left: 10px;                   /* Adjust left margin */
+    border-bottom: 2px solid #000000;    /* Underline for button */
+    border-radius: 0px;                  /* No border radius */
+}
+
+/* Style for the input group */
+.col-md-4 .input-group-append {
+    display: inline-flex;                /* Make button inline with the input */
+    align-items: center;                 /* Center vertically */
+}
+
+/* Ensure both input and button are aligned horizontally */
+.col-md-4 .input-group {
+    display: flex;                       /* Use flexbox for alignment */
+    align-items: left;                   /* Align items vertically centered */
+    gap: 10px;                           /* Adjust gap between input and button */
+    margin-bottom: 20px;                 /* Add margin below input group */
+}
+
+/* Footer List Styles */
+.footer .list-unstyled li {
+    font-family: 'Poppins', sans-serif;  /* Use Poppins font */
+    font-weight: 700;                    /* Medium weight for Poppins */
+    font-size: 16px;                     /* Set font size to 16px */
+    color: #000000;                      /* Set text color to black */
+    margin-bottom: 45px;                 /* Add space between list items */
+}
+
+.footer .list-unstyled li a {
+    color: #000000;                      /* Set link color to black */
+    text-decoration: none;               /* Remove underline from links */
+}
+
+.row.mt-4 .col-md-12 {
+    text-align: left;                   /* Shift text alignment to the left */
+}
+
+.row.mt-4 p {
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    font-weight: 400;                   /* Regular weight for Poppins */
+    font-size: 16px;                    /* Set font size to 16px */
+    color: #000000;                     /* Set text color to black */
+    margin: 0;                          /* Remove default margin */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer {
+        padding: 10px;                  /* Reduce padding on smaller screens */
+    }
+
+    .footer h5, .footer h6, .footer p {
+        margin-bottom: 20px;            /* Reduce margin for smaller screens */
+        font-size: 14px;                /* Adjust font size for better readability */
+    }
+
+    .col-md-4 .form-control {
+        max-width: 100%;                /* Full width for smaller screens */
+    }
+
+    .col-md-4 .input-group {
+        flex-direction: column;          /* Stack input and button vertically */
+        align-items: stretch;            /* Stretch items to full width */
+        gap: 5px;                        /* Adjust gap between input and button */
+    }
+
+    .footer .list-unstyled {
+        text-align: center;              /* Center-align list items */
+    }
+
+    .footer .list-unstyled li {
+        margin-bottom: 20px;             /* Adjust margin between list items */
+    }
+}
+
